@@ -1,0 +1,16 @@
+#logoutBttn {
+    float: right;
+    padding: .5% 1.5%;
+    background-color: rgb(219, 50, 50);
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+body {
+    margin: 1.5%;
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 10%;
+}

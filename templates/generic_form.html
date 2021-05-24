@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{%  static  '/style.css'  %}" />
+  </head>
+
+  <body>
+    <a href="/">back to home</a>
+    <form method="post" action="">
+        {% csrf_token %} 
+        {% for field in form %} 
+            <p>{{ field.label_tag }} {{ field }}</p>
+        {% endfor %}
+      <input type="submit" value="Submit" id="submitpage" />
+    </form>
+  </body>
+</html>

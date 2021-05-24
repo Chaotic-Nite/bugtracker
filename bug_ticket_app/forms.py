@@ -26,3 +26,14 @@ class CreateTicketForm(forms.ModelForm):
             'assigned_user'
         ]
 
+
+class EditTicketForm(forms.ModelForm):
+    class Meta:
+        model = BugTicket
+        fields = [
+            'title',
+            'description',
+            'status',
+            'assigned_user'
+        ]
+
