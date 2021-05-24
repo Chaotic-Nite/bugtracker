@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BugUserConfig(AppConfig):
+class BugTicketConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'bug_user'
+    name = 'bug_ticket_app'
