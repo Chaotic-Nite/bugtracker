@@ -28,24 +28,40 @@
 
 #header-two {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
 }
 
 #ticket-id {
-    padding: 1.5% 2%;
+    padding: 1.5% 15px;
     background-color: rgb(36, 36, 36);
     color: whitesmoke;
 }
 
+#ticket-body {
+    display: flex;
+    padding: 2%;
+}
+
+.border-shading {
+    border: 2px solid lightslategray;
+    box-shadow: 10px 10px 5px #88888842;
+}
+
 .ticket {
+    padding: 2%;
     margin: 3% auto 0 auto;
     width: 75%;
 }
 
+#assign {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* Drop down button from W3Schools */
 .drop-button {
-    background-color: #04AA6D;
+    background-color: #6804aa;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -77,7 +93,7 @@
   
   .dropdown:hover .dropdown-content {display: block;}
   
-  .dropdown:hover .drop-button {background-color: #3e8e41;}
+  .dropdown:hover .drop-button {background-color: #2a0941;}
 
 option {
     text-align: center;
