@@ -5,10 +5,14 @@
   </head>
 
   <body>
-    <span>Home </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+      <div id='top-line'>
+          <div style="display: flex;">
+              <span id='home'>Home</span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a>
+          </div><a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+      </div>
     <div class='trackers  border-shading'>
         <h1>New Tickets</h1>
-        <table style="width:100%">
+        <table style="width:100%" >
             <tr>
                 <th>#</th>
                 <th style='padding-left: 5%; text-align: left;'>Title</th>

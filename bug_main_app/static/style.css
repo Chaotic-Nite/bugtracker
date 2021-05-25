@@ -1,16 +1,21 @@
 #logoutBttn {
     float: right;
-    padding: .5% 1.5%;
+    padding: 10px 20px;
     background-color: rgb(219, 50, 50);
     font-weight: bold;
     color: whitesmoke;
 }
 
 #newTicket {
-    padding: .5% 1.5%;
+    padding: 10px 20px;
     background-color: rgb(50, 61, 219);
     font-weight: bold;
     color: whitesmoke;
+}
+
+.trackers {
+    margin: 2% 0 2% 0;
+    padding-bottom: 25px;
 }
 
 .trackers h1 {
@@ -24,6 +29,17 @@
 #header {
     display: flex;
 
+}
+
+#home {
+    padding-top: .5%;
+    margin-right: 10px;
+}
+
+#top-line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #header-two {
@@ -58,6 +74,42 @@
     text-align: center;
     margin-bottom: 20px;
 }
+
+/* W3Schools styling for form */
+.form-build input, .form-build textarea{
+    width: 100%;
+}
+
+.form-build {
+    padding: 2%;
+    width: 75%;
+    margin: 2% auto 0 auto;
+}
+
+input[type=text], input[type=password], textarea, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #984caf;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #8645a0;
+  }
 
 /* Drop down button from W3Schools */
 .drop-button {
@@ -109,3 +161,22 @@ button {
     border: 1px solid black;
     border-radius: 10%;
 }
+
+table {
+    border-collapse: collapse;
+  }
+  tr { 
+    border: solid;
+    border-width: 1px 0;
+}
+
+td{
+    padding: 5px 0 5px 0;
+}
+
+tr:first-child {
+    border-top: none;
+  }
+  tr:last-child {
+    border-bottom: none;
+  }

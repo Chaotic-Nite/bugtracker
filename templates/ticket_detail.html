@@ -5,7 +5,11 @@
   </head>
 
   <body>
-    <a href='/'>Home</a><span> </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    <div id='top-line'>
+        <div style="display: flex;">
+            <a id='home' href='/'>Home</a><span> </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a>
+        </div><a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    </div>
     <div class='ticket border-shading'>
         <div style='display: flex; justify-content: space-between; align-items: center;'>
             <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1>{{ticket.title}}</h1></div> 
@@ -23,7 +27,9 @@
                         <a href='/assign/{{ticket.id}}'>Unclaim Ticket</a>
                         <a href='/done/{{ticket.id}}'>Mark Complete</a>
                         {% else %}
+                        {% if ticket.assigned_user == None %}
                         <a href='/assign/{{ticket.id}}'>Claim Ticket</a>
+                        {% endif %}
                         {% endif %}
                         <hr>
                         <a href='/invalid/{{ticket.id}}'>Mark Invalid</a>
