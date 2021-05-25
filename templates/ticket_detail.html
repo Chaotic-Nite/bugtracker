@@ -5,5 +5,44 @@
   </head>
 
   <body>
+    <a href='/'>Home</a><span> </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    <div class='ticket border-shading'>
+        <div style='display: flex; justify-content: space-between;'>
+            <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1>{{ticket.title}}</h1></div> <div id='header-two'>
+                {% if ticket.assigned_user %}
+                <div><h3 >Assigned to: </h3><br><a style='font-size: large;' href='/user/{{ticket.assigned_user.id}}'>{{ticket.assigned_user}}</a></div>
+                {% endif %}
+                <div class='dropdown' style='float: right; padding-right: 3%;'>
+                    <Select name='Actions'>
+                        {% if ticket.filed_user == request.user %}
+                        <option>Edit</option>
+                        {% endif %}
+                        {% if ticket.assigned_user == request.user %}
+                        <option>Unclaim Ticket</option>
+                        <option>Mark Complete</option>
+                        {% else %}
+                        <option>Claim Ticket</option>
+                        {% endif %}
+                        <option disabled>____________</option>
+                        <option>Mark Invalid</option>
+                    </Select>
+                </div>
+            </div>
+        </div>
+        <div id='ticket-body'>
+            <div>
+                <h2>Info</h2>
+                <span>Status: {{ticket.status}}</span>
+                <hr>
+                <span>Created At: {{ ticket.created_at }}</span>
+                <hr>
+                {% if ticket.completed_user %}
+                <span>Completed by: <a href='/user/{{ticket.completed_user.id}}'>{{ ticket.completed_user }}</a></span>
+                <hr>
+                {% endif %}
+                <span>Reported by: <a href='/user/{{ticket.filed_user.id}}'>{{ ticket.filed_user}}</a></span>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
