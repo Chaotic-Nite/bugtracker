@@ -6,7 +6,7 @@
 
   <body>
     {% if request.user.is_authenticated %}
-        <a href="/">back to home</a>
+        <a href="/">Home</a>
     {% endif %}
     <form method="post" action="">
         {% csrf_token %}

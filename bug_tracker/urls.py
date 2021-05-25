@@ -18,12 +18,15 @@ from django.urls import path
 from bug_main_app import views
 
 urlpatterns = [
+    path('', views.index, name='homepage'),
     path('user/<int:user_id>/', views.user_detail_view, name='user_detail'),
     path('ticket/<int:ticket_id>/', views.ticket_detail_view, name='ticket_detail'),
-    path('ticket/<int:ticket_id>/edit', views.edit_ticket_view),
     path('create_ticket/', views.create_ticket_view),
     path('login/', views.login_view),
     path('logout/', views.logout_view),
-    path('', views.index, name='homepage'),
     path('admin/', admin.site.urls),
+    path('ticket/<int:ticket_id>/edit', views.edit_ticket_view),
+    path('assign/<int:ticket_id>/', views.assign_view),
+    path('done/<int:ticket_id>/', views.done_view),
+    path('invalid/<int:ticket_id>/', views.invalid_view),
 ]

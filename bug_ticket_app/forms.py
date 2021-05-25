@@ -34,8 +34,6 @@ class EditTicketForm(forms.ModelForm):
         model = BugTicket
         fields = [
             'title',
-            'description',
-            'status',
-            'assigned_user'
+            'description'
         ]
 

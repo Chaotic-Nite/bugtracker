@@ -79,3 +79,35 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('homepage'))
+
+
+def assign_view(request, ticket_id):
+    ticket = BugTicket.objects.get(id=ticket_id)
+    print(ticket.assigned_user)
+    if ticket.assigned_user == None:
+        ticket.status = 'In Progress'
+        ticket.assigned_user = request.user
+    else:
+        ticket.status = 'New'
+        ticket.assigned_user = None
+    ticket.save()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'], '/')
+
+
+def done_view(request, ticket_id):
+    ticket = BugTicket.objects.get(id=ticket_id)
+    ticket.status = 'Done'
+    ticket.completed_user = ticket.assigned_user
+    ticket.assigned_user = None
+    ticket.save()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'], '/')
+
+
+def invalid_view(request, ticket_id):
+    ticket = BugTicket.objects.get(id=ticket_id)
+    ticket.status = 'Invalid'
+    ticket.assigned_user = None
+    ticket.completed_user = None
+    ticket.save()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'], '/')
+
