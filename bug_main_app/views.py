@@ -45,16 +45,13 @@ def create_ticket_view(request):
 @login_required(login_url='/login/')
 def edit_ticket_view(request, ticket_id):
     ticket = BugTicket.objects.get(id=ticket_id)
-    if ticket.filed_user == request.user:
-        if request.method ==  'POST':
-            form = CreateTicketForm(request.POST, instance=ticket)
-            form.save()
-            return HttpResponseRedirect(reverse('ticket_detail', args={ticket_id,}))
+    if request.method ==  'POST':
+        form = CreateTicketForm(request.POST, instance=ticket)
+        form.save()
+        return HttpResponseRedirect(reverse('ticket_detail', args={ticket_id,}))
         
-        form = EditTicketForm(instance=ticket)
-        return render(request, 'generic_form.html', {'form': form})
-    else:
-        return HttpResponseRedirect(reverse('homepage'))
+    form = EditTicketForm(instance=ticket)
+    return render(request, 'generic_form.html', {'form': form})
 
 
 @login_required(login_url='/login/')
