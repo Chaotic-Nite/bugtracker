@@ -34,7 +34,11 @@ def create_ticket_view(request):
             obj = form.save(commit=False)
             obj.filed_user = request.user
             obj.save()
-            return HttpResponseRedirect(reverse('ticket_detail'))
+            newest_id = BugTicket.objects.latest('id')
+            return HttpResponseRedirect(reverse('ticket_detail', args=(newest_id.id,)))
+    
+    form = CreateTicketForm()
+    return render(request, 'generic_form.html', {'form': form})
 
 
 @login_required(login_url='/login/')

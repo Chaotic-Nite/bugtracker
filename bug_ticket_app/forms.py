@@ -16,6 +16,8 @@ class CreateTicketForm(forms.ModelForm):
         super(CreateTicketForm, self).__init__(*args, **kwargs)
 
         self.fields['status'].inital = dict(BugTicket.STATUS_CHOICES).get('New')
+        self.fields['status'].required = False
+        self.fields['assigned_user'].required = False
 
     class Meta:
         model = BugTicket

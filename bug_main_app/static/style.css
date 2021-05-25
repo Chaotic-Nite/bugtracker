@@ -6,8 +6,20 @@
     color: whitesmoke;
 }
 
+#newTicket {
+    padding: .5% 1.5%;
+    background-color: rgb(50, 61, 219);
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.trackers h1 {
+    text-align: center;
+}
+
 body {
     margin: 1.5%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 button {

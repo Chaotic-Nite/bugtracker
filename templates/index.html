@@ -5,6 +5,147 @@
   </head>
 
   <body>
-    <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    <span>Home </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    <div class='trackers'>
+        <h1>New Tickets</h1>
+        <table style="width:100%">
+            <tr>
+                <th>#</th>
+                <th style='padding-left: 5%; text-align: left;'>Title</th>
+                <th>Assigned To</th>
+                <th>Reported By</th>
+                <th>Ticket Age</th>
+            </tr>
+            {% for field in new %}
+            <tr>
+                <td style='text-align: center;'>
+                    {{ field.id }}
+                </td>
+                <td style='padding-left: 5%;'>
+                    {{ field.title }}
+                </td>
+                <td style='text-align: center;'>
+                    {% if field.assigned_user %}
+                        {{ field.assigned_user }}
+                    {% endif %}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.filed_user }}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.date_diff }} day(s)
+                </td>
+            </tr>
+            {% endfor %}
+           </table>
+    </div>
+
+    {% if progress %}
+    <div class='trackers'>
+        <h1>In Progress Tickets</h1>
+        <table style="width:100%">
+            <tr>
+                <th>#</th>
+                <th style='padding-left: 5%; text-align: left;'>Title</th>
+                <th>Assigned To</th>
+                <th>Reported By</th>
+                <th>Ticket Age</th>
+            </tr>
+            {% for field in progress %}
+            <tr>
+                <td style='text-align: center;'>
+                    {{ field.id }}
+                </td>
+                <td style='padding-left: 5%;'>
+                    {{ field.title }}
+                </td>
+                <td style='text-align: center;'>
+                    {% if field.assigned_user %}
+                        {{ field.assigned_user }}
+                    {% endif %}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.filed_user }}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.date_diff }} day(s)
+                </td>
+            </tr>
+            {% endfor %}
+           </table>
+    </div>
+    {% endif %}
+
+    {% if done %}
+    <div class='trackers'>
+        <h1>Completed Tickets</h1>
+        <table style="width:100%">
+            <tr>
+                <th>#</th>
+                <th style='padding-left: 5%; text-align: left;'>Title</th>
+                <th>Assigned To</th>
+                <th>Reported By</th>
+                <th>Ticket Age</th>
+            </tr>
+            {% for field in done %}
+            <tr>
+                <td style='text-align: center;'>
+                    {{ field.id }}
+                </td>
+                <td style='padding-left: 5%;'>
+                    {{ field.title }}
+                </td>
+                <td style='text-align: center;'>
+                    {% if field.assigned_user %}
+                        {{ field.assigned_user }}
+                    {% endif %}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.filed_user }}
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.date_diff }} day(s)
+                </td>
+            </tr>
+            {% endfor %}
+           </table>
+    </div>
+    {% endif %}
+
+    {% if invalid %}
+    <div class='trackers'>
+        <h1>Invalid Tickets</h1>
+        <table style="width:100%">
+            <tr>
+                <th>#</th>
+                <th style='padding-left: 5%; text-align: left;'>Title</th>
+                <th>Assigned To</th>
+                <th>Reported By</th>
+                <th>Ticket Age</th>
+            </tr>
+            {% for field in invalid %}
+            <tr>
+                <td style='text-align: center;'>
+                    {{ field.id }}
+                </td>
+                <td style='padding-left: 5%;'>
+                    <a href='/ticket/{{ field.id }}/'>{{ field.title }}</a>
+                </td>
+                <td style='text-align: center;'>
+                    {% if field.assigned_user %}
+                        <a href='/user/{{field.assigned_user.id}}/'>{{ field.assigned_user }}</a>
+                    {% endif %}
+                </td>
+                <td style='text-align: center;'>
+                    <a href='/user/{{ field.filed_user.id }}/'>{{ field.filed_user }}</a>
+                </td>
+                <td style='text-align: center;'>
+                    {{ field.date_diff }} day(s)
+                </td>
+            </tr>
+            {% endfor %}
+           </table>
+    </div>
+    {% endif %}
 </body>
 </html>
