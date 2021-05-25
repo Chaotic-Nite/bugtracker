@@ -147,6 +147,16 @@ input[type=text], input[type=password], textarea, select {
   
   .dropdown:hover .drop-button {background-color: #8645a0;}
 
+#logoutBttn:hover {
+    cursor: pointer;
+    background-color: darkred;
+}
+
+#newTicket:hover {
+    cursor: pointer;
+    background-color: darkblue;
+}
+
 option {
     text-align: center;
     padding: .2%;

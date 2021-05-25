@@ -33,6 +33,7 @@ def create_ticket_view(request):
         if form.is_valid:
             obj = form.save(commit=False)
             obj.filed_user = request.user
+            obj.status = 'New'
             obj.save()
             newest_id = BugTicket.objects.latest('id')
             return HttpResponseRedirect(reverse('ticket_detail', args=(newest_id.id,)))
@@ -89,6 +90,7 @@ def assign_view(request, ticket_id):
     else:
         ticket.status = 'New'
         ticket.assigned_user = None
+    ticket.completed_user = None
     ticket.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'], '/')
 
