@@ -23,7 +23,7 @@
 }
 
 .trackers a {
-    color: rgb(66, 16, 173);
+    color:  #984caf;
 }
 
 #header {
@@ -113,7 +113,7 @@ input[type=text], input[type=password], textarea, select {
 
 /* Drop down button from W3Schools */
 .drop-button {
-    background-color: #6804aa;
+    background-color: #984caf;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -145,7 +145,7 @@ input[type=text], input[type=password], textarea, select {
   
   .dropdown:hover .dropdown-content {display: block;}
   
-  .dropdown:hover .drop-button {background-color: #2a0941;}
+  .dropdown:hover .drop-button {background-color: #8645a0;}
 
 option {
     text-align: center;
