@@ -12,7 +12,7 @@
     </div>
     <div class='ticket border-shading'>
         <div style='display: flex; justify-content: space-between; align-items: center;'>
-            <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1>{{ticket.title}}</h1></div> 
+            <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1 style='margin-left: 15px;'>{{ticket.title}}</h1></div> 
             <div id='header-two'>
                 {% if ticket.assigned_user %}
                 <div id='assign'><h4 style='margin-bottom: 0;'>Assigned to: </h4><a style='font-size: large;' href='/user/{{ticket.assigned_user.id}}'>{{ticket.assigned_user}}</a></div>
