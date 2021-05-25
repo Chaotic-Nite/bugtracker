@@ -22,7 +22,7 @@ def user_detail_view(request, user_id):
     working_tickets = BugTicket.objects.filter(assigned_user=current_user)
     filed_tickets = BugTicket.objects.filter(filed_user=current_user)
     completed_tickets = BugTicket.objects.filter(completed_user=current_user)
-    return render(request, 'user_detail.html', {'current_user': current_user, 'progress': working_tickets, 'filed':filed_tickets, 'completed':completed_tickets})
+    return render(request, 'user_detail.html', {'current_user': current_user, 'progress': working_tickets, 'filed':filed_tickets, 'done':completed_tickets})
 
 
 # Stack Overflow Daniel Roseman for saving additional fields
