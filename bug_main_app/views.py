@@ -22,7 +22,7 @@ def user_detail_view(request, user_id):
     working_tickets = BugTicket.objects.filter(assigned_user=current_user)
     filed_tickets = BugTicket.objects.filter(filed_user=current_user)
     completed_tickets = BugTicket.objects.filter(completed_user=current_user)
-    return render(request, 'user_detail.html', {'current_user': current_user, 'progress': working_tickets, 'filed':filed_tickets, 'completed':completed_tickets})
+    return render(request, 'user_detail.html', {'current_user': current_user, 'progress': working_tickets, 'filed':filed_tickets, 'done':completed_tickets})
 
 
 # Stack Overflow Daniel Roseman for saving additional fields
@@ -33,6 +33,7 @@ def create_ticket_view(request):
         if form.is_valid:
             obj = form.save(commit=False)
             obj.filed_user = request.user
+            obj.status = 'New'
             obj.save()
             newest_id = BugTicket.objects.latest('id')
             return HttpResponseRedirect(reverse('ticket_detail', args=(newest_id.id,)))
@@ -44,16 +45,13 @@ def create_ticket_view(request):
 @login_required(login_url='/login/')
 def edit_ticket_view(request, ticket_id):
     ticket = BugTicket.objects.get(id=ticket_id)
-    if ticket.filed_user == request.user:
-        if request.method ==  'POST':
-            form = CreateTicketForm(request.POST, instance=ticket)
-            form.save()
-            return HttpResponseRedirect(reverse('ticket_detail', args={ticket_id,}))
+    if request.method ==  'POST':
+        form = CreateTicketForm(request.POST, instance=ticket)
+        form.save()
+        return HttpResponseRedirect(reverse('ticket_detail', args={ticket_id,}))
         
-        form = EditTicketForm(instance=ticket)
-        return render(request, 'generic_form.html', {'form': form})
-    else:
-        return HttpResponseRedirect(reverse('homepage'))
+    form = EditTicketForm(instance=ticket)
+    return render(request, 'generic_form.html', {'form': form})
 
 
 @login_required(login_url='/login/')
@@ -83,13 +81,13 @@ def logout_view(request):
 
 def assign_view(request, ticket_id):
     ticket = BugTicket.objects.get(id=ticket_id)
-    print(ticket.assigned_user)
     if ticket.assigned_user == None:
         ticket.status = 'In Progress'
         ticket.assigned_user = request.user
     else:
         ticket.status = 'New'
         ticket.assigned_user = None
+    ticket.completed_user = None
     ticket.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'], '/')
 

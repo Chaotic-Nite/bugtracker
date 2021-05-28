@@ -5,10 +5,14 @@
   </head>
 
   <body>
-    <span>Home </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+      <div id='top-line'>
+          <div style="display: flex;">
+              <span id='home'>Home</span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a>
+          </div><a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+      </div>
     <div class='trackers  border-shading'>
         <h1>New Tickets</h1>
-        <table style="width:100%">
+        <table style="width:100%" >
             <tr>
                 <th>#</th>
                 <th style='padding-left: 5%; text-align: left;'>Title</th>
@@ -16,6 +20,7 @@
                 <th>Reported By</th>
                 <th>Ticket Age</th>
             </tr>
+            {% if new %}
             {% for field in new %}
             <tr>
                 <td style='text-align: center;'>
@@ -37,10 +42,14 @@
                 </td>
             </tr>
             {% endfor %}
+            {% else %}
+                <tr style='padding-left: 5%;'>
+                    <td><b>None</b></td>
+                </tr>
+            {% endif %}
            </table>
     </div>
 
-    {% if progress %}
     <div class='trackers  border-shading'>
         <h1>In Progress Tickets</h1>
         <table style="width:100%">
@@ -51,6 +60,7 @@
                 <th>Reported By</th>
                 <th>Ticket Age</th>
             </tr>
+            {% if progress %}
             {% for field in progress %}
             <tr>
                 <td style='text-align: center;'>
@@ -72,11 +82,14 @@
                 </td>
             </tr>
             {% endfor %}
+            {% else %}
+                <tr style='padding-left: 5%;'>
+                    <td><b>None</b></td>
+                </tr>
+            {% endif %}
            </table>
     </div>
-    {% endif %}
 
-    {% if done %}
     <div class='trackers  border-shading'>
         <h1>Completed Tickets</h1>
         <table style="width:100%">
@@ -87,6 +100,7 @@
                 <th>Reported By</th>
                 <th>Ticket Age</th>
             </tr>
+            {% if done %}
             {% for field in done %}
             <tr>
                 <td style='text-align: center;'>
@@ -108,11 +122,14 @@
                 </td>
             </tr>
             {% endfor %}
+            {% else %}
+                <tr style='padding-left: 5%;'>
+                    <td><b>None</b></td>
+                </tr>
+            {% endif %}
            </table>
     </div>
-    {% endif %}
 
-    {% if invalid %}
     <div class='trackers border-shading'>
         <h1>Invalid Tickets</h1>
         <table style="width:100%">
@@ -123,6 +140,7 @@
                 <th>Reported By</th>
                 <th>Ticket Age</th>
             </tr>
+            {% if invalid %}
             {% for field in invalid %}
             <tr>
                 <td style='text-align: center;'>
@@ -144,8 +162,12 @@
                 </td>
             </tr>
             {% endfor %}
+            {% else %}
+                <tr style='padding-left: 5%;'>
+                    <td><b>None</b></td>
+                </tr>
+            {% endif %}
            </table>
     </div>
-    {% endif %}
 </body>
 </html>

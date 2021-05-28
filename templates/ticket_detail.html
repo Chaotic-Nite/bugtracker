@@ -5,33 +5,39 @@
   </head>
 
   <body>
-    <a href='/'>Home</a><span> </span><a href='create_ticket/'><button id='newTicket'>Submit New Ticket</button></a> <a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    <div id='top-line'>
+        <div style="display: flex;">
+            <a id='home' href='/'>Home</a><span> </span><a href='/create_ticket/'><button id='newTicket'>Submit New Ticket</button></a>
+        </div><a href="/logout/"><button id='logoutBttn'>Logout</button></a>
+    </div>
     <div class='ticket border-shading'>
-        <div style='display: flex; justify-content: space-between;'>
-            <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1>{{ticket.title}}</h1></div> <div id='header-two'>
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <div id='header'><h1 id='ticket-id'>{{ticket.id}}</h1><h1 style='margin-left: 15px;'>{{ticket.title}}</h1></div> 
+            <div id='header-two'>
                 {% if ticket.assigned_user %}
-                <div><h3 >Assigned to: </h3><br><a style='font-size: large;' href='/user/{{ticket.assigned_user.id}}'>{{ticket.assigned_user}}</a></div>
+                <div id='assign'><h4 style='margin-bottom: 0;'>Assigned to: </h4><a style='font-size: large;' href='/user/{{ticket.assigned_user.id}}'>{{ticket.assigned_user}}</a></div>
                 {% endif %}
                 <div class='dropdown' style='float: right; padding-right: 3%;'>
                     <button class='drop-button'>Actions</button>
                     <div class='dropdown-content'>
-                        {% if ticket.filed_user == request.user %}
                         <a href='/ticket/{{ticket.id}}/edit'>Edit</a>
-                        {% endif %}
                         {% if ticket.assigned_user == request.user %}
                         <a href='/assign/{{ticket.id}}'>Unclaim Ticket</a>
                         <a href='/done/{{ticket.id}}'>Mark Complete</a>
                         {% else %}
+                        {% if ticket.assigned_user == None %}
                         <a href='/assign/{{ticket.id}}'>Claim Ticket</a>
                         {% endif %}
-                        <p>____________</p>
+                        {% endif %}
+                        <hr>
                         <a href='/invalid/{{ticket.id}}'>Mark Invalid</a>
                     </div>
                 </div>
             </div>
         </div>
+        <hr>
         <div id='ticket-body'>
-            <div>
+            <div style='width: 30%; padding-right: 2%; border-right: 1px lightgray solid;'>
                 <h2>Info</h2>
                 <span>Status: {{ticket.status}}</span>
                 <hr>
@@ -42,6 +48,10 @@
                 <hr>
                 {% endif %}
                 <span>Reported by: <a href='/user/{{ticket.filed_user.id}}'>{{ ticket.filed_user}}</a></span>
+            </div>
+            <div style="width: 70%; padding-left: 2%;">
+                <h3>Description</h3>
+                <p>{{ticket.description}}</p>
             </div>
         </div>
     </div>
