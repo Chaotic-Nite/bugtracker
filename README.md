@@ -1,3 +1,5 @@
+### Code Project from Kenzie Academy
+
 It's important to focus on more things that Django is good at... that may not be immediately obvious as projects that make good websites. When working on any project of reasonable size, bug reports and feature requests are going to come in faster than you can work on them (or keep them in your head). Eventually, you'll start forgetting them unless you have a place to write them down... and why not make that a little more full-featured while you go?
 
 #### **Your Task**
@@ -59,18 +61,3 @@ When a ticket is marked as Invalid, these change as follows:
 *   User Assigned: None
 *   User who Completed: None
 
-Hint: when you're modifying models, you don't have to serve them in order to modify them; you can modify the fields that you need and save it back with no issues. For example:
-
-```python
-article = NewsItem.objects.get(id=1)  
-article.title = "What's up, Doc?"  
-article.save()
-```
-
-There are no points for pretty, so you're just looking for enough of a front end to make it function. Good luck, and may the Bugs be with you!
-
-#### **Submission**
-
-Submit a link to your pull request for the project.
-
-<pre>https://github.com/kenzie-se-q4-django-bugtracker/&ltgithub_username&gt/pull/&ltnumber&gt</pre>
